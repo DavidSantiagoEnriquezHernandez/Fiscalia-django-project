@@ -1,0 +1,260 @@
+{% extends 'core/base.html' %}
+{% block title %}Página de Ejemplo{% endblock %}
+
+{% block content %}
+
+<body>
+  
+    <div class="container mt-5 formulario">
+        <div class="row justify-content-center">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-body">
+                        <container>
+                            {% if messages %}
+                            {% for message in messages %}
+                            <div class="alert alert-{{ message.tags }}">
+                         {{ message }}
+                        </div>
+                        {% endfor %}
+                        {% endif %}
+                        
+                        </container>
+                        <h5 class="card-title">Registro de empleado</h5>
+                        <hr style="border: 0.5px solid black;">
+                        <form method="post" class="form-horizontal" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <!-- Formulario de datos generales -->
+                            <div class="datos-generales">
+                                <h6>Datos Generales</h6>
+                                <hr style="border: 0.5px solid black;">
+                                <div class="form-group row  mb-5">
+                                    <label for="{{ datos_generales_form.nombre.id_for_label }}" class="col-sm-2 col-form-label">{{ datos_generales_form.nombre.label }}</label>
+                                    <div class="col-sm-4">
+                                        {{ datos_generales_form.nombre }}
+                                    </div>
+                                    <label for="{{ datos_generales_form.ap_paterno.id_for_label }}" class="col-sm-2 col-form-label">Apellido Paterno</label>
+                                    <div class="col-sm-4">
+                                        {{ datos_generales_form.ap_paterno }}
+                                    </div>
+                                </div>
+                                <div class="form-group row mb-5 mt-5">
+                                    <label for="{{ datos_generales_form.ap_materno.id_for_label }}" class="col-sm-2 col-form-label">Apellido Materno</label>
+                                    <div class="col-sm-4">
+                                        {{ datos_generales_form.ap_materno }}
+                                    </div>
+                                    <label for="{{ datos_generales_form.curp.id_for_label }}" class="col-sm-2 col-form-label">CURP</label>
+                                    <div class="col-sm-4">
+                                        {{ datos_generales_form.curp }}
+                                    </div>
+                                </div>
+                                <div class="form-group row mb-5">
+                                    <label for="{{ datos_generales_form.cuip.id_for_label }}" class="col-sm-2 col-form-label">CUIP</label>
+                                    <div class="col-sm-4">
+                                        {{ datos_generales_form.cuip }}
+                                    </div>
+                                    <label for="{{ datos_generales_form.tel_celular.id_for_label }}" class="col-sm-2 col-form-label">Teléfono celular</label>
+                                    <div class="col-sm-4">
+                                        {{ datos_generales_form.tel_celular }}
+                                    </div>
+                                </div>
+                                <div class="form-group row ">
+                                    <label for="{{ datos_generales_form.email_particular.id_for_label }}" class="col-sm-2 col-form-label">Email Particular</label>
+                                    <div class="col-sm-4">
+                                        {{ datos_generales_form.email_particular }}
+                                    </div>
+                                    <label for="{{ datos_generales_form.fecha_nacimiento.id_for_label }}" class="col-sm-2 col-form-label">Fecha de nacimiento</label>
+                                    <div class="col-sm-4">
+                                        {{ datos_generales_form.fecha_nacimiento }}
+                                    </div>
+                                    
+                                </div>
+                                <div class="form-group row mb-5 mt-5">
+                                    <label for="{{ datos_generales_form.ciudad_particular.id_for_label }}" class="col-sm-2 col-form-label">Ciudad Particular</label>
+                                    <div class="col-sm-4">
+                                        {{ datos_generales_form.ciudad_particular }}
+                                    </div>
+                                    <label for="{{ datos_generales_form.direccion_particular.id_for_label }}" class="col-sm-2 col-form-label">Dirección</label>
+                                    <div class="col-sm-4">
+                                        {{ datos_generales_form.direccion_particular }}
+                                    </div>
+                                </div>
+                                <div class="form-group row mb-5 mt-5">
+                                    <label for="{{ datos_generales_form.colonia_particular.id_for_label }}" class="col-sm-2 col-form-label">{{ datos_generales_form.colonia_particular.label }}</label>
+                                    <div class="col-sm-4">
+                                        {{ datos_generales_form.colonia_particular }}
+                                    </div>
+                                    <label for="{{ datos_generales_form.escolaridad.id_for_label }}" class="col-sm-2 col-form-label">{{ datos_generales_form.escolaridad.label }}</label>
+                                    <div class="col-sm-4">
+                                        {{ datos_generales_form.escolaridad }}
+                                    </div>
+                                </div>
+                                <div class="form-group row mb-5 mt-5">
+                                    <label for="{{ datos_generales_form.genero.id_for_label }}" class="col-sm-2 col-form-label">Género</label>
+                                    <div class="col-sm-4">
+                                        {{ datos_generales_form.genero }}
+                                    </div>
+                                    <label for="{{ datos_generales_form.estado_civil.id_for_label }}" class="col-sm-2 col-form-label">{{ datos_generales_form.estado_civil.label }}</label>
+                                    <div class="col-sm-4">
+                                        {{ datos_generales_form.estado_civil }}
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Fin del formulario de datos generales -->
+    
+                            <!-- Campos de cursos y foto -->
+                            <div class="form-group row mt-5 mb-5">
+                                <label for="{{ datos_generales_form.cursos.id_for_label }}" class="col-sm-2 col-form-label">{{ datos_generales_form.cursos.label }}</label>
+                                <div class="col-sm-4">
+                                    {{ datos_generales_form.cursos }}
+                                </div>
+                                <label for="{{ datos_generales_form.foto.id_for_label }}" class="col-sm-2 col-form-label">{{ datos_generales_form.foto.label }}</label>
+                                <div class="col-sm-4">
+                                    {{ datos_generales_form.foto }}
+                                    {% if datos_generales_form.instance.foto %}
+                                    <img src="{{ datos_generales_form.instance.foto.url }}" alt="Foto de perfil" style="max-width: 217px; max-height: 200px;  ">
+                                    {% else %}
+                                    <p>No hay foto disponible</p>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <!-- Fin de campos de cursos y foto -->
+    
+                            <!-- Campo de usuario -->
+                            <div class="form-group row mb-5 mt-5">
+                                <label for="{{ datos_generales_form.usuario.id_for_label }}" class="col-sm-2 col-form-label">Usuario</label>
+                                <div class="col-sm-4">
+                                    {{ datos_generales_form.usuario }}
+                                </div>
+                                <label for="{{ datos_generales_form.numero_empleado.id_for_label }}" class="col-sm-2 col-form-label">Número de empleado</label>
+                                    <div class="col-sm-4">
+                                        {{ datos_generales_form.numero_empleado }}
+                                    </div>
+
+                            </div>
+                           
+                            <!-- Fin del campo de usuario -->
+                             <hr style="border: 1px solid black;">
+                            <!-- Formulario de datos oficiales -->
+                          
+                            <div class="datos-oficiales">
+                                <h6>Datos Oficiales</h6>
+                                <hr style="border: 1px solid black;">
+                                <div class="form-group row mb-5">
+                                    <label for="{{ datos_oficiales_form.fecha_ingreso.id_for_label }}" class="col-sm-2 col-form-label">{{ datos_oficiales_form.fecha_ingreso.label }}</label>
+                                    <div class="col-sm-4">
+                                        {{ datos_oficiales_form.fecha_ingreso }}
+                                    </div>
+                                    <label for="{{ datos_oficiales_form.sueldo_base.id_for_label }}" class="col-sm-2 col-form-label">{{ datos_oficiales_form.sueldo_base.label }}</label>
+                                    <div class="col-sm-4">
+                                        {{ datos_oficiales_form.sueldo_base }}
+                                    </div>
+                                </div>
+                                <div class="form-group row mt-5">
+                                    <label for="{{ datos_oficiales_form.compensacion.id_for_label }}" class="col-sm-2 col-form-label">Compe</label>
+                                    <div class="col-sm-4">
+                                        {{ datos_oficiales_form.compensacion }}
+                                    </div>
+                                    <label for="{{ datos_oficiales_form.puesto.id_for_label }}" class="col-sm-2 col-form-label">{{ datos_oficiales_form.puesto.label }}</label>
+                                    <div class="col-sm-4">
+                                        {{ datos_oficiales_form.puesto }}
+                                    </div>
+                                </div>
+                                <div class="form-group row mt-5">
+                                    <label for="{{ datos_oficiales_form.plaza.id_for_label }}" class="col-sm-2 col-form-label">{{ datos_oficiales_form.plaza.label }}</label>
+                                    <div class="col-sm-4">
+                                        {{ datos_oficiales_form.plaza }}
+                                    </div>
+                                    <label for="{{ datos_oficiales_form.email_oficial.id_for_label }}" class="col-sm-2 col-form-label">{{ datos_oficiales_form.email_oficial.label }}</label>
+                                    <div class="col-sm-4">
+                                        {{ datos_oficiales_form.email_oficial }}
+                                    </div>
+                                </div>
+                                <div class="form-group row mb-5 mt-5">
+                                    <label for="{{ datos_oficiales_form.area.id_for_label }}" class="col-sm-2 col-form-label">Área</label>
+                                    <div class="col-sm-4">
+                                        {{ datos_oficiales_form.area }}
+                                    </div>
+                                    <label for="{{ datos_oficiales_form.direccion.id_for_label }}" class="col-sm-2 col-form-label">Dirección</label>
+                                    <div class="col-sm-4">
+                                        {{ datos_oficiales_form.direccion }}
+                                    </div>
+                                </div>
+                                <div class="form-group row mb-5 mt-5">
+                                    <label for="{{ datos_oficiales_form.departamento.id_for_label }}" class="col-sm-2 col-form-label">Dpto.</label>
+                                    <div class="col-sm-4">
+                                        {{ datos_oficiales_form.departamento }}
+                                    </div>
+                                    <label for="{{ datos_oficiales_form.zona.id_for_label }}" class="col-sm-2 col-form-label">Zona</label>
+                                    <div class="col-sm-4">
+                                        {{ datos_oficiales_form.zona }}
+                                    </div>
+                                    <br>
+                                    
+                                    <label for="{{ datos_oficiales_form.usuario.id_for_label }}" class="col-sm-2 col-form-label mt-5 ">Usuario</label>
+                                    <div class="col-sm-4 mt-5">
+                                        {{ datos_oficiales_form.usuario}}
+                                    </div>
+                                    <label for="{{ datos_generales_form.activo.id_for_label }}" class="col-sm-2 col-form-label mt-5 ">Empleado Activo</label>
+                                    <div class="col-sm-4 mt-5">
+                                        {{ datos_generales_form.activo}}
+                                    </div>
+                                    </div>
+                                    <div class="form-group row mb-5">
+                                        <label for="{{ datos_oficiales_form.examen_c3.id_for_label }}" class="col-sm-2 col-form-label">Exámen C3</label>
+                                        <div class="col-sm-4">
+                                            {{ datos_oficiales_form.examen_c3 }}
+                                        </div>
+                                        <label for="{{ datos_oficiales_form.posicion.id_for_label }}" class="col-sm-2 col-form-label">Posición</label>
+                                        <div class="col-sm-4">
+                                            {{ datos_oficiales_form.posicion }}
+                                        </div>
+                                    
+                            </div>
+                            <!-- Fin del formulario de datos oficiales -->
+
+                            <!-- Botón de envío -->
+                            <div class="form-group row mt-4">
+                                <div class="col-sm-offset-2 col-sm-12">
+                                    <button type="submit" class="btn btn-primary btn-block">Registrar empleado</button>
+                                </div>
+                            </div>
+                            <!-- Fin del botón de envío -->
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+
+
+<script>
+    
+    document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('id_fecha_nacimiento').type = 'date';
+    });
+     // Función para copiar el valor seleccionado del campo de usuario del primer formulario al segundo formulario
+   
+</script>
+
+<!--  Bootstrap -->
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<!-- Bootstrap CSS -->
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Bootstrap JS -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<!-- Bootstrap Datepicker CSS -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css" rel="stylesheet">
+
+<!-- Bootstrap Datepicker JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+</body>
+</html>
+</body>
+{% endblock %}

@@ -1,0 +1,40 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Iniciar Sesión</title>
+  <link href="https://fonts.googleapis.com/css?family=Rubik&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'core/css/styles.css' %}">
+</head>
+<body>
+    
+<div class="container">
+  <div class="left-section">
+    <div class="header">
+      <h1 class="animation a1">Bienvenido!</h1>
+      <h4 class="animation a2">Sistema gestión de usuarios</h4>
+    </div>
+    <div class="form">
+      <form method="post" action="{% url 'core:signin' %}" class="custom-form">
+        {{error}}
+        {% csrf_token %}
+        <div class="form-field animation a3">
+          <label class="fr" for="{{ form.username.id_for_label }}">Usuario:</label>
+          {{ form.username }}
+        </div>
+        <div class="form-field animation a4">
+          <label for="{{ form.password.id_for_label }}">Contraseña:</label>
+          {{ form.password }}
+        </div>
+
+        <button class="btn">Iniciar Sesión</button>
+      </form>
+    </div>
+  </div>
+  <div class="right-section"></div>
+</div>
+  
+</body>
+</html>

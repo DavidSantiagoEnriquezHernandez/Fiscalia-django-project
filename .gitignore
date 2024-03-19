@@ -1,0 +1,9 @@
+myvenv/
+__pycache__/
+*.sqlite3
+/core/migrations/
+/core/__pycache__/
+media/
+/core/media/
+/core/settings.py
+*.settings.py
