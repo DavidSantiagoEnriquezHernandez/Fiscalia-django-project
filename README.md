@@ -4,5 +4,5 @@
   
 </p>
 <div>
-  <img src ="C:\Users\DIEID\Desktop\registeremp.png">
+  <img src ="registeremp.png">
 </div>
