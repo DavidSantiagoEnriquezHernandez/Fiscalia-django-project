@@ -23,9 +23,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-5$n%**m1iv_fnw6d!-chx*9=ui&nowb25-u5bo7$g4ik-@5oee'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['10.18.114.84']
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -77,10 +77,7 @@ WSGI_APPLICATION = 'fiscalia.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.oracle',
-        'NAME': 'SIGENEW',
-        'USER': 'FISCALIASIGE',
-        'PASSWORD': 'Dsehysnnd5',
+        
 }
 }
 
