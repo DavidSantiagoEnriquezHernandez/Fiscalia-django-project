@@ -79,8 +79,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.oracle',
         'NAME': 'SIGENEW',
-        'USER': 'FISCALIASIGE',
-        'PASSWORD': 'Dsehysnnd5',
+        'USER': '***********',
+        'PASSWORD': '*******',
 }
 }
 
